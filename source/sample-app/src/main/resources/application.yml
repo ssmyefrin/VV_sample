@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: sample-app
+  
+  datasource:
+    url: jdbc:h2:file:./data/mydb;MODE=MySQL;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+
+jwt:
+  secret-key: vms7A36J9rf6yYnc7A36J9rf6yYnc7A36J9rf6yYnc7A36J9rf6yYnc7A36J9rf6yYnc
+  # 30분
+  access-token-expiration: 1800000
+  # 7일
+  refresh-token-expiration: 604800000
