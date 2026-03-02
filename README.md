@@ -1,5 +1,13 @@
 # Agent Verifier — Sample
 
+![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agent_Framework-orange)
+![LangChain](https://img.shields.io/badge/LangChain-LLM_Orchestration-green)
+![Groq](https://img.shields.io/badge/Groq-LPU_Inference-red)
+![Llama](https://img.shields.io/badge/Llama_3.3-70b-blueviolet)
+![Pydantic](https://img.shields.io/badge/Pydantic-v2-teal)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
 > LLM 기반 자동 빌드 검증 및 수정 에이전트 (샘플 버전)
 
 빌드/테스트 실패를 자동으로 감지하고, LLM이 수정안을 생성·적용·검증하는 루프를 반복해 코드를 자동으로 고쳐주는 도구입니다.
@@ -17,6 +25,15 @@
 | Agent Framework | LangGraph |
 | 모델 연동 | LangChain |
 | 데이터 검증 | Pydantic v2 |
+
+### 왜 Groq + Llama-3.3-70b인가?
+
+이 프로젝트의 최종 목표는 **DDD 패턴이 학습된 Local LLM**을 파인튜닝하여 온프레미스에서 동작시키는 것입니다.
+
+- **Groq (LPU):** Verify → Fix 루프를 여러 번 반복하는 Agentic Workflow 특성상 **추론 속도가 핵심**입니다. 대기 시간이 길어지면 자동화의 의미가 퇴색되기 때문에, Tokens/sec가 압도적으로 빠른 Groq을 선택했습니다.
+- **Llama-3.3-70b-versatile:** 상용 API(GPT-4o 등)에 종속되면 로컬 전환 시 프롬프트와 아키텍처를 전면 재작업해야 합니다. 오픈소스인 Llama 라인업을 미리 사용하면 **로컬 LLM 전환 비용을 최소화**할 수 있습니다. 그 중 `versatile` 변형은 코드 이해·생성에 균형 잡힌 성능을 보여, 빌드 에러 분석→수정안 생성이라는 이 프로젝트의 유스케이스에 가장 적합했습니다.
+
+> 즉, Groq은 로컬 LLM 환경이 갖춰지기 전까지의 **전략적 대체재**입니다.
 
 ---
 
