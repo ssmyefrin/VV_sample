@@ -1,0 +1,32 @@
+{
+    "task_id": "notice-crud-001",
+    "repo_root": "D:/Project/AG/V/source/sample-app",
+    "goal": "공지사항 CRUD 추가",
+    "verify": {
+        "max_output_chars": 12000,
+        "commands": [
+            {
+                "name": "backend_test",
+                "workdir": ".",
+                "cmd": [
+                    "gradlew",
+                    "test",
+                    "--nope"
+                ],
+                "timeout_sec": 900
+            },
+            {
+                "name": "backend_build",
+                "workdir": ".",
+                "cmd": [
+                    "gradlew",
+                    "build",
+                    "-x",
+                    "test",
+                    "--nope"
+                ],
+                "timeout_sec": 900
+            }
+        ]
+    }
+}

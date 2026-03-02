@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific
+.DS_Store
+.ag_backups/
+.ag_artifacts/
+.env
+.env.*
+
+# Java/Gradle (for source/sample-app)
+**/build/
+**/out/
+**/.gradle/
+**/bin/
+**/.settings/
+**/.project/
+**/.classpath/
+**/target/
